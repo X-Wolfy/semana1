@@ -32,6 +32,13 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
+    @Transactional
+    public List<PersonaResponse> obtenerPorNombre(String nombre) {
+        log.info("Buscando presonas que contengan el nombre: {}", nombre);
+        return personaRepository.findByNombreContainingIgnoreCase(nombre).stream().map(personaMapper::entityToResponse).toList();
+    }
+
+    @Override
     public PersonaResponse obtenerPorId(Long id) {
         return personaMapper.entityToResponse(obtenerPersonaOException(id));
     }
