@@ -37,6 +37,6 @@ public class Persona {
     @Column(name = "EMAIL", nullable = false, length = 100)
     private String email;
 
-    @Column(name = "TELEFONO", nullable = false, length = 10)
+    @Column(name = "TELEFONO", nullable = false, length = 10, unique = true)
     private String telefono;
 }
